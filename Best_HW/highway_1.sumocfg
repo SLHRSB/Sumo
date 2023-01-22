@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2021-09-22 17:46:48 by Eclipse SUMO GUI Version 1.10.0
+-->
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="E:\Saeedeh\PhD\Sumo HW Project_Github\Best_HW\highway_1.net.xml"/>
+        <route-files value="E:\Saeedeh\PhD\Sumo HW Project_Github\Best_HW\highway_1.rou.xml"/>
+    </input>
+
+
+</configuration>

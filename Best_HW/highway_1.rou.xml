@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<routes >
+    <vType id="vType1" vClass="passenger" speedFactor="normc(1,0.1,0.2,2)" guiShape="passenger/sedan" color="0,0,1"/>
+    <flow id="flow_1" laneChange="1" color="yellow" begin="0.00"  from="e0" to="e1" end="1000000.00" number="100000">
+        <stop lane="e1_0" endPose = "10" duration = "4" />
+    </flow>
+    <!--<flow id="flow_3" begin="0.00" color="green" from="ed2" to="eu2" end="1000000.00" number="1800000"/>-->
+    <!--<trip id="vehicle_1" depart="0.00" color="cyan" from="e0" to="e1" />-->
+
+        <!-- Ego car -->
+    <route id="routeEgo"  edges="ed0 e1" >
+    </route>
+
+    <vType id="vType0" vClass="passenger" speedFactor="normc(1,0.1,0.2,2)" guiShape="passenger/sedan" color="1,0,0"/>
+    <vType id="vType2" vClass="passenger" speedFactor="normc(1,0.1,0.2,2)" guiShape="passenger/sedan" color="0,1,0"/>
+</routes>
