@@ -173,7 +173,7 @@ class SumoEnv(Env):
 			position_ego = np.asarray(self.traci.vehicle.getPosition(self.egoCarID))
 		except:
 			print("--Traci couldn't find car, terminal check")
-			terminal = True
+			terminal = 1
 			self.terminalType =  'Car not found'
 			print("terminalType:", self.terminalType)
 			self.car_not_found +=1

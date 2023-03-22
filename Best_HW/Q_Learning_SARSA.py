@@ -50,12 +50,9 @@ def main(train, buckets,alpha,gamma,epsilon):
         print("test")
         with open('q_table.pkl', 'rb') as f:
             Q = pickle.load(f)
-
-
-
+   
     
-    
-    fig_name=[]
+    Rewards=[]
     totalRewards=[]
     avg_speeds =  []
 
@@ -86,9 +83,10 @@ def main(train, buckets,alpha,gamma,epsilon):
             s, a = s_, a_    
 
         epsilon -= 1/(num_epochs) if epsilon > 0 else 0
+
         totalRewards.append(epRewards)
-        avg_r = np.mean(totalRewards[-50:])
-        fig_name.append(avg_r)
+        Rewards.append(np.mean(totalRewards[-50:]))
+
         avg_speed = np.mean(speed_history)
         avg_speeds.append(avg_speed)
         
@@ -97,12 +95,7 @@ def main(train, buckets,alpha,gamma,epsilon):
         with open('q_table.pkl', 'wb') as f:
             pickle.dump(Q, f)
     print("End of Learning. the total number of collision: ", env.collisions)
-    return (fig_name, avg_speeds)
-
-
-
-
-
+    return (Rewards, avg_speeds)
 
 
 
