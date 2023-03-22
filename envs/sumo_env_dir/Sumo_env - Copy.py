@@ -15,7 +15,7 @@ import time
 class SumoEnv(Env):
 
 	def __init__(self, mode='gui', simulation_end=36000):
-		print("-------------------------------- Discrete action Environment created!!! --------------------------------")
+		print("-------------------------------- Best Environment created!!! --------------------------------")
 		self.simulation_end = simulation_end
 		self.mode = mode
 		self.seed()
@@ -38,7 +38,7 @@ class SumoEnv(Env):
 		self.state = None
 
 		high = np.array([150, 3.5, np.finfo(np.float32).max, np.finfo(np.float32).max], dtype=np.float32)
-		self.action_space = spaces.Discrete(2)  # acceleration 
+		self.action_space = spaces.Box(np.array([-1]), np.array([1]), dtype=np.float32)  # acceleration  #self.action_space = spaces.Box(np.array([-1,-2]),np.array([2,4]),dtype=np.float32)
 		self.observation_space = spaces.Box(np.array([0,0,0,0]), np.array([1,1,1,1]), dtype=np.float32)
 
 	def reset(self):
@@ -173,7 +173,7 @@ class SumoEnv(Env):
 			position_ego = np.asarray(self.traci.vehicle.getPosition(self.egoCarID))
 		except:
 			print("--Traci couldn't find car, terminal check")
-			terminal = 1
+			terminal = True
 			self.terminalType =  'Car not found'
 			print("terminalType:", self.terminalType)
 			self.car_not_found +=1
@@ -311,12 +311,7 @@ class SumoEnv(Env):
 	def takeAction(self, action):
 
 		dt = self.traci.simulation.getDeltaT() / 1000.0
-		if action == 0:
-
-			self.speed = self.speed - 1
-		else:
-			self.speed = self.speed + 1
-		
+		self.speed = self.speed + action
 
 		if  self.speed <= 0:
 			self.speed = 0
